@@ -28,5 +28,5 @@ deploy:
         username: $USERNAME
         password: $PASSWORD 
         repository: wayfarer830/DotnetCoreLearn
-        registry: http://registry.hub.docker.com
-        entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
+        registry: http://registry.hub.docker.com        
+        tag: latest
