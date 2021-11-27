@@ -27,5 +27,7 @@ deploy:
     - internal/docker-push:
         username: $USERNAME
         password: $PASSWORD 
-        repository: wayfarer830/dotnetlearn    
+        repository: wayfarer830/dotnetlearn
+        registry: https://registry.hub.docker.com
         tag: latest
+        entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
