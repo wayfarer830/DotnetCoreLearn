@@ -28,5 +28,5 @@ deploy:
         username: $USERNAME
         password: $PASSWORD 
         repository: wayfarer830/DotnetCoreLearn
-        registry: http://registry.hub.docker.com        
+        registry: https://registry.hub.docker.com        
         tag: latest
