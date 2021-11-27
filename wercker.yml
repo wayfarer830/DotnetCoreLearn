@@ -28,6 +28,6 @@ deploy:
         username: $USERNAME
         password: $PASSWORD 
         repository: wayfarer830/dotnetlearn
-        registry: https://registry.hub.docker.com
         tag: latest
-        entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
+        cmd: dotnet run
+        ports: 80
