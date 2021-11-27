@@ -1,0 +1,32 @@
+box: mcr.microsoft.com/dotnet/sdk:6.0
+build:
+  steps:    
+    # Gets the dependencies
+    - script:
+        name: restore
+        code: |
+          dotnet restore
+    # Build the project
+    - script:
+        name: build
+        code: |
+          dotnet build
+    # publish the project
+    - script:
+        name: publish
+        code: |
+          dotnet publish -o publish
+    #copy binary files
+    - script:
+        name: copy binary files
+        code: |
+          cp -r . $WERCKER_OUTPUT_DIR/app
+          cd $WERCKER_OUTPUT_DIR/app
+deploy: 
+  steps:
+    - internal/docker-push:
+        username: $USERNAME
+        password: $PASSWORD 
+        repository: wayfarer830/DotnetCoreLearn
+        registry: http://registry.hub.docker.com
+        entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
