@@ -25,9 +25,10 @@ build:
 deploy: 
   steps:
     - internal/docker-push:
+        registry: https://registry.hub.docker.com/v2
         username: $USERNAME
         password: $PASSWORD 
         repository: wayfarer830/dotnetlearn
         tag: latest
-        cmd: dotnet run
-        ports: 80
+        cwd: $WERCKER_OUTPUT_DIR/app
+        entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
