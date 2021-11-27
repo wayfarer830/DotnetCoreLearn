@@ -27,6 +27,5 @@ deploy:
     - internal/docker-push:
         username: $USERNAME
         password: $PASSWORD 
-        repository: wayfarer830/DotnetCoreLearn
-        registry: https://registry.hub.docker.com        
+        repository: wayfarer830/DotnetCoreLearn    
         tag: latest
