@@ -1,6 +1,11 @@
 box: mcr.microsoft.com/dotnet/sdk:6.0
 build:
   steps:    
+    # HelloWorld Project
+    - script:
+        name: change to directory
+        code: |
+            cd HelloWorld
     # Gets the dependencies
     - script:
         name: restore
@@ -16,6 +21,7 @@ build:
         name: publish
         code: |
           dotnet publish -o publish
+          cd publish
     #copy binary files
     - script:
         name: copy binary files
