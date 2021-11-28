@@ -40,8 +40,6 @@ deploy:
   steps:
     - internal/docker-push:
         registry: https://registry.hub.docker.com
-        username: $USERNAME
-        password: $PASSWORD 
         repository: wayfarer830/dotnetlearn
         tag: latest
         cwd: $WERCKER_OUTPUT_DIR/app
