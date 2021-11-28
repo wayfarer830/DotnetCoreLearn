@@ -3,7 +3,7 @@ build:
   steps:    
     # HelloWorld Project
     - script:
-        name: change to directory
+        name: change to HelloWorld directory
         code: |
             cd HelloWorld
     # Gets the dependencies
@@ -28,10 +28,18 @@ build:
         code: |
           cp -r . $WERCKER_OUTPUT_DIR/app
           cd $WERCKER_OUTPUT_DIR/app
+    - script:
+        name: chmod
+        code: |
+          chmod +x ./docker_entrypoint.sh
+    - script:
+        name: copy entrypoint
+        code: |
+          cp docker_entrypoint.sh $WERCKER_OUTPUT_DIR/app
 deploy: 
   steps:
     - internal/docker-push:
-        registry: https://registry.hub.docker.com/v2
+        registry: https://registry.hub.docker.com
         username: $USERNAME
         password: $PASSWORD 
         repository: wayfarer830/dotnetlearn
