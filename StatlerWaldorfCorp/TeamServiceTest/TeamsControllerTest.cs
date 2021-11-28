@@ -19,6 +19,7 @@ namespace TeamServiceTest
             Assert.Equal(origin.Count,2);    
         }
 
+        [Fact]
         public async void CreateTeamAddsTeamToList()
         {
             TeamsController controller = new TeamsController(new MemoryTeamRepository());
@@ -27,6 +28,13 @@ namespace TeamServiceTest
 
             Team team = new Team("sample");
             var result = controller.CreateTeam(team);
+
+            //重新获取
+            teams = (IEnumerable<Team>)(await controller.GetAllTeams() as ObjectResult).Value;
+            Assert.Equal(teams.Count(),origin.Count+1);
+
+            var sample = teams.FirstOrDefault(target=>target.Name == "sample");
+            Assert.NotNull(sample);
         }
     }
 }

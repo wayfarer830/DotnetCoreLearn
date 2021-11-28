@@ -16,6 +16,8 @@ namespace TeamService.Controllers
         public TeamsController(ITeamRepository repository)
         {
             this.repository = repository;
+            this.repository.AddTeam(new Team("one"));
+            this.repository.AddTeam(new Team("two"));
         }
 
         [HttpGet]
